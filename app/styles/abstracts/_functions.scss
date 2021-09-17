@@ -1,0 +1,111 @@
+////
+/// Functions
+/// @group abstracts
+////
+
+///
+/// Combine 3+ Maps
+///
+/// @param {*} $maps... - List of Maps
+///
+/// @throw Error if no parameter is passed.
+///
+/// @return {Map}
+///
+@function map-multiple-merge($maps...) {
+    $merged: ();
+
+    @each $map in $maps {
+        $merged: map-merge($merged, $map);
+    }
+    @return $merged;
+}
+
+///
+/// Contrasting Text Color
+///
+/// @param {Color} $background-color - Background-color to contrast against
+/// @param {Color} $text-color-light [black] - Color for dark backgrounds
+/// @param {Color} $text-color-dark [white] - Color for light backgrounds
+///
+/// @throw Error if no parameters are passed.
+///
+/// @return {Color} Contrasting Text Color
+///
+@function contrasting-color($background-color, $text-color-dark: black, $text-color-light: white) {
+    @if not $background-color {
+        @warn "`contrasting-color()` expects at least one parameter.";
+        @return false;
+    }
+
+    @if lightness($background-color) > 50 {
+        @return v(color, $text-color-dark, true);
+    }
+
+    @return v(color, $text-color-light, true);
+}
+
+///
+/// Unpack Transition List
+///
+/// @param {list} $list - Transition list to unpack
+///
+/// @example scss
+///   transition: unpack-transition(all 1s)
+///   // transition: all 1s ease;
+///
+/// @throw Error if no parameter is passed.
+///
+/// @return {String} Full Transition
+///
+@function unpack-transition($list) {
+    @if not $list {
+        @warn "`unpack-transition()` expects a `$list` parameter.";
+        @return false;
+    }
+
+    $property: nth($list, 1);
+    $time: if(length($list) > 1, nth($list, 2), v(transition-duration));
+    $function: if(length($list) > 2, nth($list, 3), v(transition-function));
+    $delay: if(length($list) > 3, nth($list, 4), 0s);
+
+    @return $property $time $function $delay;
+}
+
+///
+/// Split `$string` into several parts using `$delimiter`.
+///
+/// @param {String} $string    - string to split
+/// @param {String} $delimiter ('') - string to use as a delimiter to split `$string`
+///
+/// @return {List}
+///
+@function str-split($string, $delimiter) {
+    $result: ();
+    $length: str-length($string);
+
+    @if str-length($delimiter) == 0 {
+        @for $i from 1 through $length {
+            $result: append($result, str-slice($string, $i, $i));
+        }
+
+        @return $result;
+    }
+
+    $running: true;
+    $remaining: $string;
+
+    @while $running {
+        $index: str-index($remaining, $delimiter);
+
+        @if $index {
+            $slice: str-slice($remaining, 1, $index - 1);
+            $result: append($result, $slice);
+            $remaining: str-slice($remaining, $index + str-length($delimiter));
+        } @else {
+            $running: false;
+        }
+    }
+
+    @return append($result, $remaining);
+}

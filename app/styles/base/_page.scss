@@ -1,0 +1,36 @@
+////
+/// Page
+/// @group base
+////
+
+html {
+    @include v(background-color, black);
+    position: relative;
+    overflow-x: hidden;
+    // prevent horizontal jump when navigating short page <--> tall page
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    scrollbar-color: v(color, black) v(color, white);
+    font-size: 100%;
+    // prevent adjustments of font-size after orientation changes in IE on
+    // Windows Phone and in iOS
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: oldstyle-nums;
+}
+
+body {
+    @include v(background-color, white);
+    @include v(color, black);
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    @include v(font-family, default);
+    @include v(font-size, default);
+    font-style: normal;
+    @include v(font-weight, default);
+    @include v(line-height, default);
+}

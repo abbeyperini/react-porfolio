@@ -1,0 +1,11 @@
+////
+/// include-media Config
+/// @group config
+////
+
+$breakpoints: (
+    small: v(measure, breakpoint-small, true),
+    medium: v(measure, breakpoint-medium, true),
+    large: v(measure, breakpoint-large, true),
+    gigantic: v(measure, breakpoint-gigantic, true)
+);

@@ -1,0 +1,88 @@
+////
+/// Color Schemes
+/// @group abstracts
+////
+
+$color-schemes: (
+    default: (
+        primary: gcu-blue,
+        secondary: gcu-blue-shade-2,
+        tertiary: pale-blue
+    ),
+    gcu-blue-teal-green: (
+        primary: gcu-blue,
+        secondary: gcu-blue-shade-2,
+        tertiary: teal-green
+    ),
+    gcu-blue-yellow: (
+        primary: gcu-blue,
+        secondary: gcu-blue-shade-2,
+        tertiary: "yellow"
+    ),
+    gcu-blue-olive-green: (
+        primary: gcu-blue,
+        secondary: gcu-blue-shade-2,
+        tertiary: olive-green
+    ),
+    purple-teal-green: (
+        primary: "purple",
+        secondary: purple-shade-2,
+        tertiary: teal-green
+    ),
+    purple-yellow: (
+        primary: "purple",
+        secondary: purple-shade-2,
+        tertiary: "yellow"
+    ),
+    purple-pink: (
+        primary: "purple",
+        secondary: purple-shade-2,
+        tertiary: "pink"
+    )
+);
+
+///
+/// Output scheme-specific colours
+///
+@mixin scheme($property, $key, $self: false) {
+    // Removes modifiers from the key
+    $key-clean: nth(str-split($key, '--'), 1);
+    $key-modifier: if(str-index($key, "--") != null, #{"--" + nth(str-split($key, '--'), 2)}, "");
+    // Loop through all color schemes building classes and properties
+    @each $scheme, $data in $color-schemes {
+        @if map-has-key($data, $key-clean) and ($self == "both" or $self == false) {
+            .scheme--#{$scheme} & {
+                @include v($property, map-get($data, $key-clean) + $key-modifier);
+            }
+        }
+    }
+    @each $scheme, $data in $color-schemes {
+        @if map-has-key($data, $key-clean) and ($self == "both" or $self == true) {
+            &.scheme--#{$scheme} {
+                @include v($property, map-get($data, $key-clean) + $key-modifier);
+            }
+        }
+    }
+}
+@mixin scheme-contrast($property, $key, $self: false) {
+    // Removes modifiers from the key
+    $key-clean: nth(str-split($key, '--'), 1);
+    $key-modifier: if(str-index($key, "--") != null, #{"--" + nth(str-split($key, '--'), 2)}, "");
+    // Loop through all color schemes building classes and properties
+    @each $scheme, $data in $color-schemes {
+        @if map-has-key($data, $key-clean) and ($self == "both" or $self == false) {
+            .scheme--#{$scheme} & {
+                $background-color: v(color, map-get($data, $key-clean) + $key-modifier, true);
+                #{$property}: contrasting-color($background-color);
+            }
+        }
+    }
+    @each $scheme, $data in $color-schemes {
+        @if map-has-key($data, $key-clean) and ($self == "both" or $self == true) {
+            &.scheme--#{$scheme} {
+                $background-color: v(color, map-get($data, $key-clean) + $key-modifier, true);
+                #{$property}: contrasting-color($background-color);
+            }
+        }
+    }
+}

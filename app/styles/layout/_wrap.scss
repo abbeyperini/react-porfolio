@@ -1,0 +1,79 @@
+////
+/// Wrap
+/// @group layout
+////
+
+.wrap {
+    width: 100%;
+    @include v(max-width, breakpoint-gigantic);
+    margin-left: auto;
+    margin-right: auto;
+    @include v(padding-left, small);
+    @include v(padding-right, small);
+
+    @include media("above:small") {
+        @include v(padding-left, medium);
+        @include v(padding-right, medium);
+    }
+
+    @include media("above:medium") {
+        @include v(padding-left, large);
+        @include v(padding-right, large);
+    }
+
+    @include media("above:gigantic") {
+        @include v(padding-left, gutter);
+        @include v(padding-right, gutter);
+    }
+}
+
+@each $name, $measure in $breakpoints {
+    .wrap--#{$name} {
+        max-width: $measure;
+    }
+}
+
+.wrap--split {
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: 1fr;
+
+    @include media("above:medium") {
+        grid-template-columns:
+            [aside-start]
+            18rem
+            [aside-end]
+            v(measure, gap)
+            [content-start]
+            repeat(12, 1fr)
+            [content-end];
+    }
+
+    .content {
+        @include media("above:medium") {
+            margin-top: 0 !important; // override owl
+            grid-column: content;
+        }
+    }
+
+    aside {
+        @include media("below:medium") {
+            order: 2;
+        }
+
+        @include media("above:medium") {
+            grid-column: aside;
+        }
+    }
+}
+
+// Full Bleed
+.full-bleed,
+%full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}

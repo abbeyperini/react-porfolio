@@ -1,0 +1,9 @@
+////
+/// Bowhead Config
+/// @group config
+////
+
+$bowhead-variable-as-default: false;
+$bowhead-show-fallback: true;
+$bowhead-generate: true;
+$bowhead-tokens: $tokens;

@@ -1,0 +1,19 @@
+////
+/// Basscss Config
+/// @group config
+////
+
+:root {
+    --breakpoint-sm: min-width(calc(var(--breakpoint-measure-small) + 1px));
+    --breakpoint-md: min-width(calc(var(--breakpoint-measure-medium) + 1px));
+    --breakpoint-lg: min-width(calc(var(--breakpoint-measure-large) + 1px));
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+.clearfix::after{
+    clear: both;
+}

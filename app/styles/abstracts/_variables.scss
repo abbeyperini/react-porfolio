@@ -1,0 +1,34 @@
+:root {
+  /** sunny side **/
+  --blue-background: #c2e9f6;
+  --blue-border: #72cce3;
+  --blue-color: #96dcee;
+  --yellow-background: #fffaa8;
+  --yellow-border: #f5eb71;
+  /** dark side **/
+  --indigo-background: #808fc7;
+  --indigo-border: #5d6baa;
+  --indigo-color: #6b7abb;
+  --gray-border: #e8e8ea;
+  --gray-dots: #e8e8ea;
+}
+
+.theme-light {
+  --dark-text: #5E4B56;
+  --accent: #dbe7e4;
+  --button-border: #5E4B56;
+  --dark-background: #DBE7E4;
+  --light-text: #5E4B56;
+  --light-background: #EDDCD2;
+}
+
+/* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
+.theme-dark {
+  --dark-text: #292929;
+  --dark-background: #2F4550;
+  --light-background: #586F7C;
+  --accent: #b8dbd9;
+  --button-border: #b8dbd9;
+  --light-text: #F9F8F8;
+}
+
