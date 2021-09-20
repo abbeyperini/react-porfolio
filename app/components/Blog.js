@@ -15,8 +15,7 @@ function Blog(props) {
   }
 
   async function fetchBlogs() {
-    //axios.get('http://localhost:800/.netlify/functions/blogPosts')
-    axios.get('https://abbeyperini.dev/.netlify/functions/blogPosts')
+    axios.get('https://domenghini.com/.netlify/functions/function-blog')
     .then((res) => {
       dispatch({
         type: "blogFetched",
