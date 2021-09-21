@@ -12,7 +12,7 @@ function SingleBlog(props) {
   }
 
   async function fetchSingleBlog(id) {
-    let url = `https://abbeyperini.dev/.netlify/functions/singleBlog?id=${id}`
+    let url = `https://davidedomenghini.netlify.app/.netlify/functions/singleBlog?id=${id}`
     axios.get(url)
     .then((res) => {
       dispatch({

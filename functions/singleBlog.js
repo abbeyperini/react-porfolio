@@ -18,7 +18,7 @@ exports.handler = async function (event, context) {
         data: blog.data
       }),
       headers: {
-        "Access-Control-Allow-Origin": "https://domenghini.com/test",
+        "Access-Control-Allow-Origin": "https://davidedomenghini.netlify.app/",
         "Access-Control-Allow-Methods": "GET"
         
       }
@@ -30,7 +30,7 @@ exports.handler = async function (event, context) {
       statusCode:err.statusCode || 500,
       body: err.message,
       headers: {
-        "Access-Control-Allow-Origin": "https://domenghini.com/test",
+        "Access-Control-Allow-Origin": "https://davidedomenghini.netlify.app/",
         "Access-Control-Allow-Methods": "GET"
 
       }

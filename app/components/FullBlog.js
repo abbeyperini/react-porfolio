@@ -12,7 +12,7 @@ function FullBlog() {
   }
 
   async function fetchBlogs() {
-    axios.get('https://abbeyperini.dev/.netlify/functions/blogPosts')
+    axios.get('https://davidedomenghini.netlify.app/.netlify/functions/blogPosts')
     .then((res) => {
       dispatch({
         type: "blogFetched",

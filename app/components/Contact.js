@@ -33,9 +33,8 @@ function Contact() {
         <aside className="container_contact">
             <h1 className="section_title">Contact</h1>
             <div className="subContact">
-                <p className="subContact_text">Download my <a href="" download="AbbeyPeriniResume">resume</a>, visit my <a href="https://abbeyperini.github.io/">personal site</a>,
-                connect with me on <a href="https://twitter.com/AbbeyPerini">Twitter</a> or <a href="https://www.linkedin.com/in/abigail-perini/">LinkedIn</a>, or fill out the form below to send me an email!</p>
-                <form className="contact-form" onSubmit={handleSubmit}>
+                 
+                <form className="contact-form" onSubmit={handleSubmit} data-netlify="true">
                     <p>
                         <label className="contact_name">
                             Your Name: <input type="text" name="name" onChange={handleChange} required />   
@@ -50,6 +49,9 @@ function Contact() {
                         <label className="message">
                             Message: <textarea name="message" onChange={handleChange} className="message_input" required/>
                         </label>
+                    </p>
+                    <p>
+                        <div data-netlify-recaptcha="true"></div>
                     </p>
                     <p>
                         <button type="submit" className="contact_button">Send</button>
