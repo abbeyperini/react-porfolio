@@ -56,7 +56,7 @@ function App() {
         unmountOnExit>
         <Header key="1" hideHeader={hideHeader}/>
       </CSSTransition>
-      { hidden && <div className="main-container">
+      {/* { hidden && <div className="main-container">
         <CSSTransition
             classNames="navBar"
             in={hidden}
@@ -75,7 +75,7 @@ function App() {
         <Single condition={hidden && single && singleShow === "contact"} component={<Contact />}/>
         <Single condition={hidden && single && singleShow === "SingleBlog"} component={<SingleBlog id={singleBlogID} />}/>
         <Single condition={hidden && single && singleShow === "FullBlog"} component={<FullBlog />} />
-        </div>}
+        </div>} */}
     </>
   )
 }

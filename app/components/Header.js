@@ -11,10 +11,11 @@ function Header(props) {
         <header>
             <div className="header_text">
                 <h1 className="header_name">Davide Domenghini</h1>
-                <h2 className="header_title">Frontend Developer</h2>
-                <button className="header_button" onClick={handleOnClick}>View my work <span className="icon">navigate_next</span><img src={Arrow} alt="some example image" />
+                <h2 className="header_title">Angelos's son and Frontend Developer</h2>
+                <p>New site/portfolio coming soon...</p>
+                {/* <button className="header_button" onClick={handleOnClick}>View my work <span className="icon">navigate_next</span><img src={Arrow} alt="some example image" />
 
-                </button>
+                </button> */}
 
             </div>
       </header>
