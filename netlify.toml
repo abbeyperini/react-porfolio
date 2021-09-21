@@ -2,3 +2,4 @@
   Command = "npm run build && npm run build:lambda"
   Functions = "netlify"
   Publish = "dist"
+  command = "echo 'this is only here so that netlify deploys functions within folders'"
