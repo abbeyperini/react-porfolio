@@ -34,7 +34,7 @@ function Contact() {
             <h1 className="section_title">Contact</h1>
             <div className="subContact">
                  
-                <form className="contact-form" onSubmit={handleSubmit} data-netlify="true">
+                <form className="contact-form" onSubmit={handleSubmit} data-netlify-recaptcha="true" data-netlify="true">
                     <p>
                         <label className="contact_name">
                             Your Name: <input type="text" name="name" onChange={handleChange} required />   
